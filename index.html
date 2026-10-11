@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bunker Game</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      border: 1px solid #333;
+    }
+    .btn {
+      background: #e50914;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>☣️ BUNKER: OMON QOLISH</h1>
+  <div class="card">
+    <h3>Xush kelibsiz, <span id="username">O'yinchi</span>!</h3>
+    <p>O'yin xonasiga qo'shilish uchun pastdagi tugmani bosing.</p>
+  </div>
+  <button class="btn" onclick="startGame()">🎮 XONAGA KIRISH</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Ekran joyini to'liq egallash
+
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+      document.getElementById('username').innerText = tg.initDataUnsafe.user.first_name;
+    }
+
+    function startGame() {
+      tg.showAlert("Tez orada xonalar ro'yxati ochiladi!");
+    }
+  </script>
+</body>
+</html>
