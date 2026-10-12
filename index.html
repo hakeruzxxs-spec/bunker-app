@@ -1,57 +1,61 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bunker Game</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    body {
-      background-color: #121212;
-      color: #ffffff;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .card {
-      background: #1e1e1e;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 20px;
-      border: 1px solid #333;
-    }
-    .btn {
-      background: #e50914;
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 8px;
-      margin-top: 20px;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bunker: Omon Qolish</title>
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>☣️ BUNKER: OMON QOLISH</h1>
-  <div class="card">
-    <h3>Xush kelibsiz, <span id="username">O'yinchi</span>!</h3>
-    <p>O'yin xonasiga qo'shilish uchun pastdagi tugmani bosing.</p>
-  </div>
-  <button class="btn" onclick="startGame()">🎮 XONAGA KIRISH</button>
+    <div class="bunker-container">
+        <!-- Yuqori sarlavha -->
+        <div class="header-plate">
+            <span class="biohazard-icon">☣</span>
+            <h1>BUNKER: OMON QOLISH</h1>
+        </div>
 
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand(); // Ekran joyini to'liq egallash
+        <!-- Terminal ekrani -->
+        <div class="terminal-screen">
+            <div class="terminal-header">Aktiv Sardor: <span id="player-name">[SARDOR]</span></div>
+            <hr class="terminal-line">
+            <div class="terminal-body">
+                <p>Salom, sardor!</p>
+                <p>Bunker terminaliga muvaffaqiyatli ulandingiz.</p>
+                <p>Tizim xonaga kirishni kutyapti.</p>
+                <p>Xonaga kirish uchun tugmani bosing.</p>
+            </div>
+        </div>
 
-    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-      document.getElementById('username').innerText = tg.initDataUnsafe.user.first_name;
-    }
+        <!-- Xonaga kirish tugmasi -->
+        <div class="button-wrapper">
+            <button class="enter-btn" onclick="enterRoom()">
+                🎮 XONAGA KIRISH
+            </button>
+        </div>
 
-    function startGame() {
-      tg.showAlert("Tez orada xonalar ro'yxati ochiladi!");
-    }
-  </script>
+        <!-- Pastki navigatsiya menyusi -->
+        <div class="bottom-nav">
+            <button class="nav-btn" onclick="openTab('shop')">
+                <span class="nav-icon">🛒</span>
+                <span class="nav-text">Do'kon</span>
+            </button>
+            <button class="nav-btn" onclick="openTab('profile')">
+                <span class="nav-icon">🪖</span>
+                <span class="nav-text">Profil</span>
+            </button>
+            <button class="nav-btn" onclick="openTab('rules')">
+                <span class="nav-icon">📑</span>
+                <span class="nav-text">Qoidalar</span>
+            </button>
+            <button class="nav-btn" onclick="openTab('rating')">
+                <span class="nav-icon">🏆</span>
+                <span class="nav-text">Reyting</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
